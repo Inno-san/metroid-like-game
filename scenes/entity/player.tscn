@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dvvfag35c60wj"]
+
+[ext_resource type="Script" uid="uid://5owyr0vv35hs" path="res://scenes/entity/player.gd" id="1_1obkj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb3kr"]
+radius = 24.0
+height = 106.0
+
+[node name="player" type="CharacterBody2D" unique_id=1464520309]
+script = ExtResource("1_1obkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=31391770]
+shape = SubResource("CapsuleShape2D_sb3kr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=678478662]
+zoom = Vector2(2.06, 2.06)
+
+[node name="relodetime" type="Timer" parent="." unique_id=522317091]
+wait_time = 0.5
+one_shot = true
