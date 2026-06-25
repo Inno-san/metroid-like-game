@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var speed:=150
 @export var direction_x: float 
 
+signal shoot(pos:Vector2, dir:Vector2)
+
 func get_input():
 	direction_x= Input.get_axis("left","right")
 	if Input.is_action_just_pressed("jump"):
@@ -15,7 +17,8 @@ func Apply_gravity(delta):
 
 func Shooting():
 	if Input.is_action_just_pressed("shoot") and $relodetime.time_left==0 :
-		print ("big booty latina")
+		shoot.emit(position,get_local_mouse_position().normalized())
+		
 		$relodetime.start()
 	
 
