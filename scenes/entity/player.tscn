@@ -1,10 +1,84 @@
 [gd_scene format=3 uid="uid://dvvfag35c60wj"]
 
 [ext_resource type="Script" uid="uid://5owyr0vv35hs" path="res://scenes/entity/player.gd" id="1_1obkj"]
+[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_gdab3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb3kr"]
-radius = 24.0
-height = 106.0
+radius = 6.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_tgyl1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gdab3"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_4y4uh"]
+resource_name = "jump"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_poj5f"]
+resource_name = "run"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2135177, 0.40568364, 0.6008998, 0.8, 1, 1.2333333, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4y4uh"]
+_data = {
+&"RESET": SubResource("Animation_tgyl1"),
+&"idle": SubResource("Animation_gdab3"),
+&"jump": SubResource("Animation_4y4uh"),
+&"run": SubResource("Animation_poj5f")
+}
 
 [node name="player" type="CharacterBody2D" unique_id=1464520309]
 script = ExtResource("1_1obkj")
@@ -18,3 +92,19 @@ zoom = Vector2(2.06, 2.06)
 [node name="relodetime" type="Timer" parent="." unique_id=522317091]
 wait_time = 0.5
 one_shot = true
+
+[node name="legs" type="Sprite2D" parent="." unique_id=1175175768]
+position = Vector2(0, -7)
+texture = ExtResource("2_gdab3")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=109174731]
+libraries/ = SubResource("AnimationLibrary_4y4uh")
+autoplay = &"idle"
+
+[node name="torso" type="Sprite2D" parent="." unique_id=299765424]
+position = Vector2(0, -9)
+texture = ExtResource("2_gdab3")
+hframes = 8
+vframes = 3
