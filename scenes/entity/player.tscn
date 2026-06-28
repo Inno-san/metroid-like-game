@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5owyr0vv35hs" path="res://scenes/entity/player.gd" id="1_1obkj"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_gdab3"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_tgyl1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb3kr"]
 radius = 6.0
@@ -108,3 +109,7 @@ position = Vector2(0, -9)
 texture = ExtResource("2_gdab3")
 hframes = 8
 vframes = 3
+
+[node name="crosshair" type="Sprite2D" parent="." unique_id=616469612]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_tgyl1")

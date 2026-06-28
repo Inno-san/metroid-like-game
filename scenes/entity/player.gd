@@ -29,8 +29,12 @@ func Apply_gravity(delta):
 func Shooting():
 	if Input.is_action_just_pressed("shoot") and $relodetime.time_left==0 :
 		shoot.emit(position,get_local_mouse_position().normalized())
-		
 		$relodetime.start()
+		
+		var tween= get_tree().create_tween()
+		tween.tween_property($crosshair, "scale",Vector2(0.1,0.1),0.2)
+		tween.tween_property($crosshair, "scale",Vector2(0.3,0.3),0.3)
+		
 	
 
 
@@ -40,9 +44,15 @@ func _physics_process(delta: float) -> void:
 	velocity.x= direction_x * speed
 	Apply_gravity(delta)
 	animation()
+	update_marker()
 	move_and_slide()
 
-func animation():
+func update_marker():
+	var marker_offset= 60
+	$crosshair.position=get_local_mouse_position().normalized() *  marker_offset
+
+func animation(): 	 	
+	
 	$legs.flip_h =direction_x<0
 	$AnimationPlayer.current_animation= 'run' if direction_x else 'idle'
 	if is_on_floor() ==false:
