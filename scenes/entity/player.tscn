@@ -82,6 +82,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" unique_id=1464520309]
+collision_mask = 6
 script = ExtResource("1_1obkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=31391770]
@@ -89,6 +90,10 @@ shape = SubResource("CapsuleShape2D_sb3kr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=678478662]
 zoom = Vector2(2.06, 2.06)
+limit_left = -240
+limit_top = -33
+limit_right = 1040
+limit_bottom = 400
 
 [node name="relodetime" type="Timer" parent="." unique_id=522317091]
 wait_time = 0.5
