@@ -90,10 +90,10 @@ shape = SubResource("CapsuleShape2D_sb3kr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=678478662]
 zoom = Vector2(2.06, 2.06)
-limit_left = -240
-limit_top = -33
-limit_right = 1040
-limit_bottom = 400
+limit_left = -252
+limit_top = 6
+limit_right = 1165
+limit_bottom = 920
 
 [node name="relodetime" type="Timer" parent="." unique_id=522317091]
 wait_time = 0.5
